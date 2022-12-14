@@ -1,4 +1,4 @@
-package dev.benedek.poc.mvc.piw.pageindependentwidget.service;
+package dev.benedek.poc.mvc.piw.core.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.function.Function;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
-import dev.benedek.poc.mvc.piw.pageindependentwidget.model.Entity;
+import dev.benedek.poc.mvc.piw.core.model.Entity;
 
 @Service
 @ApplicationScope
@@ -34,19 +34,10 @@ public class ModuleService {
    */
   public Optional<String> set(String key, String data) {
     return Optional.ofNullable(dataStore.get(key))
-      .flatMap(entity -> {
-        entity.setData(data);
-        return callbacks.getOrDefault(key, this::defaultCallback).apply(entity);
-      });
-
-    // same as:
-    // if(dataStore.containsKey(key)){
-    //   Entity entity = dataStore.get(key);
-    //   entity.setData(data);
-    //   return callbacks.getOrDefault(key, this::defaultCallback).apply(entity);
-    // }
-
-    // return Optional.empty();
+        .flatMap(entity -> {
+          entity.setData(data);
+          return callbacks.getOrDefault(key, this::defaultCallback).apply(entity);
+        });
   }
 
   private void addCallback(String id, Function<Entity, Optional<String>> callback) {

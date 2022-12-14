@@ -1,4 +1,4 @@
-package dev.benedek.poc.mvc.piw.pageindependentwidget.model;
+package dev.benedek.poc.mvc.piw.core.model;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.atomic.AtomicLong;
@@ -9,11 +9,11 @@ public class Entity {
   private final long ticketNumber = counter.getAndIncrement();
   private String data = "Entity nr. " + ticketNumber + ", created at " + LocalDateTime.now();
 
-  public Entity (String data) {
+  public Entity(String data) {
     this.data += " - " + data.substring(0, Math.min(5, data.length()));
   }
 
-  public long getTicketNumber () {
+  public long getTicketNumber() {
     return ticketNumber;
   }
 

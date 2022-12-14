@@ -4,14 +4,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import dev.benedek.poc.mvc.piw.pageindependentwidget.PageIndependentWidgetApplication;
+import dev.benedek.poc.mvc.piw.core.PageIndependentWidgetRoot;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {ExampleAppApplication.class, PageIndependentWidgetApplication.class})
+@ComponentScan(basePackageClasses = { ExampleAppApplication.class, PageIndependentWidgetRoot.class })
 public class ExampleAppApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ExampleAppApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(ExampleAppApplication.class, args);
+  }
 
 }
